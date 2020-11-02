@@ -1,5 +1,5 @@
-{%- set cssBlah = "/_includes/office-hours/style.css" -%}
-{% css page, cssBlah %}
+{%- set officeCSS = "/_includes/office-hours/style.css" -%}
+{% css page, officeCSS %}
 {%- set moduleCSS = "/_includes/module.css" -%}
 {% css page, moduleCSS %}
 {%- set mediaCSS = "/_includes/layouts/media-module/style.css" -%}
@@ -21,5 +21,5 @@
       so you don’t miss out!
     </p>
   </div>
-  <div class="{% className mediaCSS, 'media-decorative' %} {% className cssBlah, 'decoration' %}"></div>
+  <div class="{% className mediaCSS, 'media-decorative' %} {% className officeCSS, 'decoration' %}"></div>
 </section>
