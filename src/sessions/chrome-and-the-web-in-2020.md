@@ -9,8 +9,8 @@ speakers:
   - jecelyn-yeen
   - sunit-jindal
   - henrik-joreteg
-start: 2019/12/09 09:30
-end: 2019/12/09 10:15
+start: 2020/12/09 09:30
+end: 2020/12/09 10:15
 description: It's the keynote! We will take you through some of the latest announcements and helpful updates to the platform, and talk about tools that help you build high-quality web experiences even more effectively.
 ---
 
