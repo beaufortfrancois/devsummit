@@ -1,6 +1,6 @@
 ---
 layout: layouts/session/index.njk
-title: Extending Workbox: custom strategies and plugins
+title: 'Extending Workbox: custom strategies and plugins'
 speakers:
   - jeff-posnick
 start: 2020/12/10 11:00
