@@ -4,6 +4,7 @@ const date = require('date-and-time');
 const nunjucks = require('nunjucks');
 const { dirname, basename } = require('path');
 const createSchedule = require('./src/schedule/script/create-schedule');
+const createWorkshops = require('./src/schedule/script/create-workshops');
 const createCalendarWidget = require('./src/_includes/calendar-widget/script/create-widget.js');
 const { dateStrToTimestamp } = require('./src/utils/date-helper.js');
 
@@ -65,6 +66,15 @@ function buildScheduleData(sessions, speakers, { basic = false } = {}) {
   schedule.sort((a, b) => (a.start < b.start ? -1 : 1));
 
   return schedule;
+}
+
+function buildWorkshopData(sessions) {
+  return sessions.map(session => ({
+    start: dateStrToTimestamp(session.data.start, utcOffset),
+    end: dateStrToTimestamp(session.data.end, utcOffset),
+    title: session.data.title,
+    speakerName: session.data.speakerName,
+  }));
 }
 
 class ModularClassName {
@@ -190,6 +200,16 @@ module.exports = function(eleventyConfig) {
     );
   });
 
+  eleventyConfig.addShortcode('workshops', sessions => {
+    return new nunjucks.runtime.SafeString(
+      createWorkshops(
+        buildWorkshopData(sessions),
+        utcOffset,
+        modCSS.getAllCamelCased('/schedule/style.css'),
+      ),
+    );
+  });
+
   eleventyConfig.addShortcode('calendarWidget', date => {
     return new nunjucks.runtime.SafeString(
       createCalendarWidget(
@@ -263,6 +283,10 @@ module.exports = function(eleventyConfig) {
       collection.getFilteredByTag('session'),
       collection.getFilteredByTag('speakers'),
     );
+  });
+
+  eleventyConfig.addCollection('jsWorkshops', collection => {
+    return buildWorkshopData(collection.getFilteredByTag('workshop'));
   });
 
   eleventyConfig.addCollection('jsScheduleBasic', collection => {

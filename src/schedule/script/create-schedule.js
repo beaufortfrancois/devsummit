@@ -1,5 +1,6 @@
 const { monthsShort } = require('../../script/date');
 const { html } = require('../../script/escape-html');
+const { formatTime, groupIntoDays } = require('./utils');
 
 module.exports = function createScheduleHtml(
   items,
@@ -8,27 +9,8 @@ module.exports = function createScheduleHtml(
   classNameMap,
   confPath,
 ) {
-  let currentMonth = '';
-  let currentDate = 0;
-
   const isVenueOffset = venueOffset === utcOffset;
-  const days = [];
-  let day;
-
-  for (const item of items) {
-    const itemDate = new Date(item.start + utcOffset);
-    const date = itemDate.getUTCDate();
-    const month = itemDate.getUTCMonth();
-
-    if (date !== currentDate || month !== currentMonth) {
-      currentDate = date;
-      currentMonth = month;
-      day = { date, month, items: [] };
-      days.push(day);
-    }
-
-    day.items.push(item);
-  }
+  const days = groupIntoDays(items, utcOffset);
 
   return html`
     <section class="${classNameMap.schedule}">
@@ -55,8 +37,6 @@ module.exports = function createScheduleHtml(
 
             ${items.map(item => {
               const sessionDate = new Date(item.start + utcOffset);
-              const hours = sessionDate.getUTCHours();
-              const minutes = sessionDate.getUTCMinutes();
 
               return html`
                 <div class="${classNameMap.timeLine}">
@@ -100,14 +80,7 @@ module.exports = function createScheduleHtml(
                           <div class="${classNameMap.dot}"></div>
                         `}
                     <h2 class="${classNameMap.time}">
-                      <time>
-                        ${hours % 12 || 12}${minutes
-                          ? ':' + minutes.toString().padStart(2, '0')
-                          : ''}
-                        <span class="${classNameMap.amPm}"
-                          >${hours < 12 ? 'am' : 'pm'}</span
-                        >
-                      </time>
+                      ${formatTime(sessionDate, classNameMap)}
                     </h2>
                   </div>
                 </div>
