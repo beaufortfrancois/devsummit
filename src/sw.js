@@ -9,10 +9,10 @@ addEventListener('install', event => {
     (async () => {
       const toCache = new Set([
         ...files.filter(f => /\.(svg|js)$/.test(f)),
-        //...files.filter(f => f.startsWith('/devsummit/assets/speakers/')),
-        //...files.filter(f => f.startsWith('/devsummit/sessions/')),
+        ...files.filter(f => f.startsWith('/devsummit/assets/speakers/')),
+        ...files.filter(f => f.startsWith('/devsummit/sessions/')),
         '/devsummit/',
-        //'/devsummit/schedule/',
+        '/devsummit/schedule/',
         '/devsummit/offline/',
       ]);
       const cache = await caches.open(cacheName);
