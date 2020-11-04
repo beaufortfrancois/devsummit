@@ -483,7 +483,7 @@
 
 .workshop-item {
   display: grid;
-  grid-template-columns: 1fr max-content;
+  grid-template-columns: max-content 1fr max-content;
   gap: 2em;
   margin: 0.7em 0;
 }
@@ -499,6 +499,13 @@
 
 .workshop-time {
   line-height: 1.2;
+}
+
+.workshop-avatar {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  clip-path: circle(50%);
 }
 
 .workshops-heading {

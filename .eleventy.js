@@ -76,6 +76,7 @@ function buildWorkshopData(sessions) {
       title: session.data.title,
       speakerName: session.data.speakerName,
       speakerURL: session.data.speakerURL,
+      speakerAvatar: `confboxAsset(${session.data.speakerAvatar})`,
     }))
     .sort((a, b) => (a.start < b.start ? -1 : 1));
 }
