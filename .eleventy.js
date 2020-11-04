@@ -69,12 +69,14 @@ function buildScheduleData(sessions, speakers, { basic = false } = {}) {
 }
 
 function buildWorkshopData(sessions) {
-  return sessions.map(session => ({
-    start: dateStrToTimestamp(session.data.start, utcOffset),
-    end: dateStrToTimestamp(session.data.end, utcOffset),
-    title: session.data.title,
-    speakerName: session.data.speakerName,
-  }));
+  return sessions
+    .map(session => ({
+      start: dateStrToTimestamp(session.data.start, utcOffset),
+      end: dateStrToTimestamp(session.data.end, utcOffset),
+      title: session.data.title,
+      speakerName: session.data.speakerName,
+    }))
+    .sort((a, b) => (a.start < b.start ? -1 : 1));
 }
 
 class ModularClassName {
