@@ -21,7 +21,7 @@ module.exports = function createWorkshopHtml(items, utcOffset, classNameMap) {
                 <div>
                   <div class="${classNameMap.workshopTitle}">${item.title}</div>
                   <div class="${classNameMap.workshopSpeaker}">
-                    ${item.speakerName}
+                    <a href="${item.speakerURL}">${item.speakerName}</a>
                   </div>
                 </div>
                 <div>
