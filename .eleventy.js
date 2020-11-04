@@ -75,6 +75,7 @@ function buildWorkshopData(sessions) {
       end: dateStrToTimestamp(session.data.end, utcOffset),
       title: session.data.title,
       speakerName: session.data.speakerName,
+      speakerURL: session.data.speakerURL,
     }))
     .sort((a, b) => (a.start < b.start ? -1 : 1));
 }
