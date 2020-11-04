@@ -6,6 +6,8 @@
 {% css page, aboutCSS %}
 
 <section class="{% className moduleCSS, 'root' %} {% className mediaCSS, 'root' %} {% className aboutCSS, 'root' %}">
+  {% from 'squiggle-banner/index.njk' import squiggleTop %}
+  {{ squiggleTop(page, gray=false) }}
   <div class="{% className mediaCSS, 'media' %} {% className aboutCSS, 'media' %}">
     {%- set utilsCSS = "/_includes/utils.css" -%}
     {% css page, utilsCSS %}

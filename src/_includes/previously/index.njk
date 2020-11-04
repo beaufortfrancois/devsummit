@@ -41,6 +41,9 @@
 {% endmacro %}
 
 <section class="{% className moduleCSS, 'root' %} {% className contentCSS, 'content-area' %}">
+  {% from 'squiggle-banner/index.njk' import squiggleTop %}
+  {{ squiggleTop(page, gray=false) }}
+
   <h1 class="{% className moduleCSS, 'heading' %}">{% headingSlug "Previously" %}</h1>
 
   <p>

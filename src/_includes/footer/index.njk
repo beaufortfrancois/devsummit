@@ -6,6 +6,8 @@ moduleCSS %}
 css %}
 
 <div class="{% className moduleCSS, 'root' %} {% className css, 'root' %}">
+  {% from 'squiggle-banner/index.njk' import squiggleTop %}
+  {{ squiggleTop(page, gray=false) }}
   <nav class="{% className css, 'footer-nav' %}">
     <a href="{{conf.path}}faqs/">FAQs</a>
     <a href="{{conf.path}}schedule/#workshops">Workshops</a>
