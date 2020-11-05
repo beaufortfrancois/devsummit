@@ -50,6 +50,8 @@ module.exports = function createScheduleHtml(
                               class="${classNameMap.icon}"
                               src="${item.icon}"
                               alt=""
+                              decoding="async"
+                              loading="lazy"
                             />
                           </div>
                         `
@@ -70,6 +72,8 @@ module.exports = function createScheduleHtml(
                                   <img
                                     src="${speaker.avatar}"
                                     alt="${speaker.name}"
+                                    decoding="async"
+                                    loading="lazy"
                                   />
                                 `,
                               )}
