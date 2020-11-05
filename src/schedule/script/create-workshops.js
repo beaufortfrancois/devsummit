@@ -18,17 +18,18 @@ module.exports = function createWorkshopHtml(items, utcOffset, classNameMap) {
 
             return html`
               <div class="${classNameMap.workshopItem}">
-                <picture>
-                  <img
-                    class="${classNameMap.workshopAvatar}"
-                    src="${item.speakerAvatar}"
-                    loading="lazy"
-                  />
-                </picture>
+                <img
+                  class="${classNameMap.workshopAvatar}"
+                  src="${item.speakers[0].avatar}"
+                  decoding="async"
+                  loading="lazy"
+                />
                 <div>
                   <div class="${classNameMap.workshopTitle}">${item.title}</div>
                   <div class="${classNameMap.workshopSpeaker}">
-                    <a href="${item.speakerURL}">${item.speakerName}</a>
+                    <a href="${item.speakers[0].link}"
+                      >${item.speakers[0].name}</a
+                    >
                   </div>
                 </div>
                 <div>
