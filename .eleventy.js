@@ -30,6 +30,7 @@ function buildScheduleData(sessions, speakers, { basic = false } = {}) {
       if (!basic) {
         obj.topics = session.data.topics;
         obj.avatar = session.data.avatar;
+        obj.avatarDescription = session.data.avatar_description || '';
         obj.body = session.data.description;
       }
 

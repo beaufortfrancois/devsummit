@@ -59,7 +59,10 @@ module.exports = function createScheduleHtml(
                       ? html`
                           <div class="${classNameMap.iconBubble}">
                             <div class="${classNameMap.avatars}">
-                              <img src="${item.avatar}" alt="" />
+                              <img
+                                src="${item.avatar}"
+                                alt="${item.avatarDescription}"
+                              />
                             </div>
                           </div>
                         `
